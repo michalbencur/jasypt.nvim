@@ -17,10 +17,8 @@ local function notify_error(err)
 end
 
 local function get_visual_range()
-    -- local start_pos = vim.fn.getpos("'<")
-    -- local end_pos = vim.fn.getpos("'>")
-    local start_pos = vim.fn.getpos("'.")
-    local end_pos = vim.fn.getpos("'v")
+    local start_pos = vim.fn.getpos("v")
+    local end_pos = vim.fn.getcurpos()
 
     local start_line = start_pos[2]
     local start_col = start_pos[3]
