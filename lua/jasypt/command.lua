@@ -84,7 +84,7 @@ end
 
 function M.setup()
     vim.api.nvim_create_user_command("JasyptEncrypt", function(opts)
-        print("### JasyptEncrypt command ", has_visual_selection())
+        print("### JasyptEncrypt command ", has_visual_selection(), vim.fn.mode())
         if has_visual_selection() then
             print("### it has visual selection")
             local start_line, start_col, end_line, end_col = get_visual_range()
