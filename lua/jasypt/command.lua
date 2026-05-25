@@ -90,6 +90,7 @@ function M.setup()
             print("### JasyptEncrypt with selection: ", start_line, start_col)
             M.encrypt_range({ line1 = start_line, col1 = start_col, line2 = end_line, col2 = end_col })
         else
+            print("### JasyptEncrypt without selection: ", opts)
             M.encrypt_range(opts)
         end
     end, { range = true, desc = "Encrypt selection with Jasypt" })
