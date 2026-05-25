@@ -34,7 +34,8 @@ local function get_visual_range()
 end
 
 local function has_visual_selection()
-    local mode = vim.fn.mode()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local mode = vim.fn.mode(bufnr)
     return mode == "v" or mode == "V" or mode == "\22"
 end
 
