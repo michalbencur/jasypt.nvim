@@ -84,9 +84,7 @@ end
 
 function M.setup()
     vim.api.nvim_create_user_command("JasyptEncrypt", function(opts)
-        print("### JasyptEncrypt command ", has_visual_selection(), vim.fn.mode())
         if has_visual_selection() then
-            print("### it has visual selection")
             local start_line, start_col, end_line, end_col = get_visual_range()
             M.encrypt_range({ line1 = start_line, col1 = start_col, line2 = end_line, col2 = end_col })
         else
@@ -102,16 +100,6 @@ function M.setup()
             M.decrypt_range(opts)
         end
     end, { range = true, desc = "Decrypt selection with Jasypt" })
-
-    vim.keymap.set("x", "<Plug>(JasyptEncrypt)", function()
-        local start_line, start_col, end_line, end_col = get_visual_range()
-        M.encrypt_range({ line1 = start_line, col1 = start_col, line2 = end_line, col2 = end_col })
-    end, { desc = "Encrypt visual selection with Jasypt" })
-
-    vim.keymap.set("x", "<Plug>(JasyptDecrypt)", function()
-        local start_line, start_col, end_line, end_col = get_visual_range()
-        M.decrypt_range({ line1 = start_line, col1 = start_col, line2 = end_line, col2 = end_col })
-    end, { desc = "Decrypt visual selection with Jasypt" })
 end
 
 return M
