@@ -12,6 +12,16 @@ The plugin uses the `openssl` CLI, so `openssl` must be available on your system
 
 ## Installation
 
+### packer
+
+```lua
+vim.pack.add({ 'https://github.com/michalbencur/jasypt.nvim' })
+
+require('jasypt').setup({
+    password = vim.env.JASYPT_PASSWORD,
+})
+```
+
 ### lazy.nvim
 
 ```lua
