@@ -47,7 +47,7 @@ local function derive_key_iv(password, salt)
         "PBKDF2",
     }, nil, false)
 
-    return output:sub(1, KEY_SIZE), output:sub(KEY_SIZE + 1, KEY_SIZE + IV_SIZE + 1)
+    return output:sub(1, KEY_SIZE), output:sub(KEY_SIZE + 1, KEY_SIZE + IV_SIZE)
 end
 
 local function base64_encode(data)
@@ -55,7 +55,7 @@ local function base64_encode(data)
 end
 
 local function base64_decode(data)
-    return system({ "openssl", "base64", "-A", "-d" }, data, true)
+    return system({ "openssl", "base64", "-A", "-d" }, data, false)
 end
 
 function M.encrypt(text, password)
